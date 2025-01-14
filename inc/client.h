@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 17:25:06 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/14 18:27:07 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/14 20:03:03 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ typedef struct s_data
 	pid_t	client_pid;
 	pid_t	server_pid;
 	char	*str;
-}	t_msg;
+}	t_info;
 
-typedef struct s_globall
+typedef struct s_global
 {
 	int						pid;
 	volatile sig_atomic_t	is_ready;
 }	t_global;
 
-//extern t_global	g_server;
+extern t_global	g_server;
 
 //
 
