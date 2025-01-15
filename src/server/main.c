@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:47:37 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/15 19:42:04 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/15 20:06:08 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	header_handler(int *i, int signum)
 	if ((*i) == 32)
 	{
 		ft_printf_fd(1, "MESSAGE SIZE: [%d]\n", g_client.message.size_message);
-		g_client.message.message = malloc((g_client.message.size_message + 1) * 1);
+		g_client.message.message = malloc((g_client.message.size_message + 1));
 		if (!g_client.message.message)
 		{
 			ft_printf_fd("Memory allocation failed");
@@ -63,7 +63,7 @@ void	message_handler(int *i, int signum)
 	static int	bit_value;
 	static int	char_value;
 	static int	message_pos;
-	
+
 	bit_value = get_signal_bit(signum);
 	if (*i % 8 < 8)
 	{
@@ -129,8 +129,6 @@ int	main(void)
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
-	{
 		sleep(1);
-	}
 	return (0);
 }
