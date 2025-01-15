@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 17:25:06 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/14 20:03:03 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:16:43 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdlib.h>
 # include <sys/types.h>
 # include <sys/time.h>
+
+//
 
 # define CHAR_0 SIGUSR1
 # define CHAR_1 SIGUSR2
