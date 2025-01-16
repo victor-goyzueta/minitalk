@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:47:37 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/16 15:16:29 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/16 19:28:19 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	server_signal_handler(int signum, siginfo_t *info, void *unused)
 		return ;
 	if (g_client.getting_header == 1)
 		header_handler(&i, signum);
-	else if (g_client.getting_msg == 1)
+	if (g_client.getting_msg == 1)
 		message_handler(&i, signum);
 	if (g_client.client_pid != 0 && (signum == SIGUSR1 || signum == SIGUSR2))
 		kill(g_client.client_pid, SIGNAL_RECEIVED);

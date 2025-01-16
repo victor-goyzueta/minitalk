@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 17:25:06 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/16 19:04:34 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/16 19:46:51 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ typedef struct s_global
 
 extern t_global	g_server;
 
-//
+int	is_validate_pid(char *str);
 
 #endif
