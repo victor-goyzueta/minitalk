@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 17:26:35 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/15 21:33:15 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/16 15:16:38 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_global
 
 extern t_global	g_client;
 
-//int	lost_signal(int s_si_pid, int signum, int *i, void *unused);
+int	lost_signal(int s_si_pid, int signum, int *i, void *unused);
 int		get_signal_bit(int signum);
 void	header_handler(int *i, int signum);
 void	message_handler(int *i, int signum);
