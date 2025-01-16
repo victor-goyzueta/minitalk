@@ -6,16 +6,18 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 17:25:06 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/15 17:16:43 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/16 16:17:21 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CLIENT_H
 # define CLIENT_H
 
+# include "libft.h"
 # include <unistd.h>
 # include <signal.h>
 # include <stdlib.h>
+# include <stdio.h>
 # include <sys/types.h>
 # include <sys/time.h>
 

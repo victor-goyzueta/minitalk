@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 19:48:23 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/02 12:49:30 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/16 18:16:51 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,15 @@
 # include <fcntl.h>
 # include <stdio.h>
 
+# include <stdarg.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+# define MAX_FD 1024
+
+/*Libft->mandatory*/
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
@@ -55,6 +64,7 @@ void	ft_putstr_fd(char *str, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
+/*Libft->linked list*/
 typedef struct s_list
 {
 	void			*content;
@@ -71,4 +81,15 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
+/*ft_printf*/
+int		ft_printf(char const *format, ...);
+int		ft_putchar(char ch);
+int		ft_putstr(char *str);
+int		ft_putptr(void *ptr);
+int		ft_putnbr(int nbr);
+int		ft_putunsnbr(unsigned int unsnbr);
+int		ft_puthex(unsigned long long num, char format);
+
+/*get_next_line*/
+char	*get_next_line(int fd);
 #endif

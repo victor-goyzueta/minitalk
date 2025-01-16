@@ -6,7 +6,7 @@
 #    By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 22:28:58 by vgoyzuet          #+#    #+#              #
-#    Updated: 2024/12/27 21:51:37 by vgoyzuet         ###   ########.fr        #
+#    Updated: 2025/01/16 18:17:37 by vgoyzuet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,9 +51,8 @@ SRCS	=	ft_isalpha.c\
 	ft_putchar_fd.c\
 	ft_putstr_fd.c\
 	ft_putendl_fd.c\
-	ft_putnbr_fd.c
-
-BNS_SRCS	= ft_lstnew_bonus.c\
+	ft_putnbr_fd.c\
+	ft_lstnew_bonus.c\
 	ft_lstadd_front_bonus.c\
 	ft_lstsize_bonus.c\
 	ft_lstlast_bonus.c\
@@ -61,11 +60,12 @@ BNS_SRCS	= ft_lstnew_bonus.c\
 	ft_lstdelone_bonus.c\
 	ft_lstclear_bonus.c\
 	ft_lstiter_bonus.c\
-	ft_lstmap_bonus.c
+	ft_lstmap_bonus.c\
+	ft_printf.c\
+	ft_printf_utils.c\
+	get_next_line.c\
 	
 OBJS = $(SRCS:.c=.o)
-
-BNS_OBJS = $(BNS_SRCS:.c=.o)
 
 # Copila all
 all: $(NAME)
@@ -79,9 +79,6 @@ $(NAME): $(OBJS)
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "Copiling $<..."
-
-bonus: $(OBJS) $(BNS_OBJS) $(NAME)
-	@ar rcs $(NAME) $(BNS_OBJS)
 
 # Delete files objects (.o)
 clean:
