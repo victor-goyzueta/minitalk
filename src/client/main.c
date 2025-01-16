@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:29:24 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/16 19:49:51 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/16 19:53:29 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(int argc, char **argv)
 
 	if (argc == 3 && is_validate_pid(ft_itoa(arg[1])))
 	{
+		init_client_data(argv, &client);
 		//
 	}
 	else

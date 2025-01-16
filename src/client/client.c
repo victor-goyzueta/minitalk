@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:38:17 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/16 19:48:29 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/16 19:53:24 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,9 @@ int	is_validate_pid(char *str)
 		i++;
 	}
 	return (1);
+}
+
+void	init_client_data(char **argv, t_info *client)
+{
+	//
 }
