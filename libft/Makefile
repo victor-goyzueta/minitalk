@@ -6,7 +6,7 @@
 #    By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 22:28:58 by vgoyzuet          #+#    #+#              #
-#    Updated: 2025/01/16 18:17:37 by vgoyzuet         ###   ########.fr        #
+#    Updated: 2025/01/17 21:45:40 by vgoyzuet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,7 @@ SRCS	=	ft_isalpha.c\
 	ft_lstiter_bonus.c\
 	ft_lstmap_bonus.c\
 	ft_printf.c\
+	ft_perror.c\
 	ft_printf_utils.c\
 	get_next_line.c\
 	
@@ -83,7 +84,7 @@ $(NAME): $(OBJS)
 # Delete files objects (.o)
 clean:
 	@rm -f $(OBJS) $(BNS_OBJS)
-	@echo "Objetcs files deleted."
+	@echo "Libft -> Objetcs files deleted."
 
 # Delete files objects and library
 fclean: clean

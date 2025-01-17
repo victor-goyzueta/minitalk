@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 19:48:23 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/16 18:16:51 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/17 21:33:27 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *str, int fd);
-void	ft_putendl_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
+void	ft_putcharfd(char c, int fd);
+void	ft_putstrfd(char *str, int fd);
+void	ft_putendlfd(char *s, int fd);
+void	ft_putnbrfd(int n, int fd);
 
 /*Libft->linked list*/
 typedef struct s_list
@@ -83,13 +83,17 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /*ft_printf*/
 int		ft_printf(char const *format, ...);
-int		ft_putchar(char ch);
-int		ft_putstr(char *str);
-int		ft_putptr(void *ptr);
-int		ft_putnbr(int nbr);
-int		ft_putunsnbr(unsigned int unsnbr);
-int		ft_puthex(unsigned long long num, char format);
+int		ft_printf_fd(int fd, char const *format, ...);
+void	ft_perror(char *error);
+
+int		ft_putchar_fd(char ch, int fd);
+int		ft_putstr_fd(char *str, int fd);
+int		ft_putptr_fd(void *ptr, int fd);
+int		ft_putnbr_fd(int nbr, int fd);
+int		ft_putunsnbr_fd(unsigned int unsnbr, int fd);
+int		ft_puthex_fd(unsigned long long num, char format, int fd);
 
 /*get_next_line*/
 char	*get_next_line(int fd);
+
 #endif

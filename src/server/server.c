@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:47:37 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/16 19:28:19 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/17 21:37:36 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,7 @@ void	header_handler(int *i, int signum)
 		ft_printf("MESSAGE SIZE: [%d]\n", g_client.message.size_message);
 		g_client.message.message = malloc((g_client.message.size_message + 1));
 		if (!g_client.message.message)
-		{
-			ft_printf("Memory allocation failed");
-			exit(EXIT_FAILURE);
-		}
+			ft_perror("Memory allocation failed");
 		g_client.getting_header = 0;
 		g_client.getting_msg = 1;
 		(*i) = 0;
@@ -94,10 +91,7 @@ void	server_signal_handler(int signum, siginfo_t *info, void *unused)
 	(void)unused;
 	info->si_pid = lost_signal(info->si_pid, signum, &i, unused);
 	if (info->si_pid == getpid())
-	{
-		ft_printf("Own process\n");
-		exit(EXIT_FAILURE);
-	}
+		ft_perror("Own process\n");
 	g_client.client_pid = info->si_pid;
 	if (g_client.current_pid == 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:29:24 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/16 19:53:29 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/17 21:36:13 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,12 @@ int	main(int argc, char **argv)
 	t_info	client;
 	int		size_message;
 
-	if (argc == 3 && is_validate_pid(ft_itoa(arg[1])))
+	if (argc == 3 && is_validate_pid(ft_itoa(argv[1])))
 	{
 		init_client_data(argv, &client);
 		//
 	}
 	else
-	{
-		ft_printf("Invalid argument");
-		exit(EXIT_FAILURE);
-	}
+		ft_perror("Invalid argument");
 	return (0);
 }
