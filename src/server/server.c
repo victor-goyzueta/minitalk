@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:47:37 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/17 21:52:11 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/18 17:05:38 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,8 @@ int	get_signal_bit(int signum)
 
 void	header_handler(int *i, int signum)
 {
-	static int	bit_value;
+	const int	bit_value = get_signal_bit(signum);
 
-	bit_value = get_signal_bit(signum);
 	if ((*i) < 32)
 	{
 		g_client.message.size_message |= (bit_value << (31 - (*i)));
@@ -45,8 +44,8 @@ void	header_handler(int *i, int signum)
 	}
 	if ((*i) == 32)
 	{
-		ft_printf("MESSAGE SIZE: [%d]\n", g_client.message.size_message);
-		g_client.message.message = malloc((g_client.message.size_message + 1));
+		ft_printf("Message size: [%d]\n", g_client.message.size_message);
+		g_client.message.message = malloc((g_client.message.size_message + 1) * 1);
 		if (!g_client.message.message)
 			ft_perror("Memory allocation failed");
 		g_client.getting_header = 0;
@@ -57,11 +56,10 @@ void	header_handler(int *i, int signum)
 
 void	message_handler(int *i, int signum)
 {
-	static int	bit_value;
+	const int	bit_value = get_signal_bit(signum);
 	static int	char_value;
 	static int	message_pos;
 
-	bit_value = get_signal_bit(signum);
 	if (*i % 8 < 8)
 	{
 		char_value |= (bit_value << (7 - (*i % 8)));
@@ -73,7 +71,7 @@ void	message_handler(int *i, int signum)
 		char_value = 0;
 		message_pos++;
 	}
-	if (*i % 8 == g_client.message.size_message)
+	if (*i / 8 == g_client.message.size_message)
 	{
 		ft_printf("message: [%s]\n", g_client.message.message);
 		free(g_client.message.message);
@@ -100,7 +98,7 @@ void	server_signal_handler(int signum, siginfo_t *info, void *unused)
 		g_client.getting_header = 1;
 		return ;
 	}
-	else if (g_client.current_pid != g_client.client_pid)
+	if (g_client.current_pid != g_client.client_pid)
 		return ;
 	if (g_client.getting_header == 1)
 		header_handler(&i, signum);

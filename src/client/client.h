@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 17:25:06 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/18 05:01:55 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/18 16:37:39 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,21 @@ typedef struct s_data
 	pid_t	client_pid;
 	pid_t	server_pid;
 	char	*message;
-	size_t	size_message;
 }	t_info;
 
 typedef struct s_global
 {
-	int						pid;
+	pid_t					pid;
 	volatile sig_atomic_t	is_ready;
 }	t_global;
 
 extern t_global	g_server;
 
-int		is_validate_pid(char *str);
 void	validate_args(int argc, char **argv);
 void	init_client_data(char **argv, t_info *client);
 int		is_server_ready(int server_pid);
 void	server_signal_handler(int signum, siginfo_t *info, void *unused);
-void 	send_message_bits(t_info *client, size_t bits);
+void 	send_message_bits(void *len, t_info *client, size_t bits);
 void	send_signal(pid_t server_pid, int signal);
 void	display_message(char *message, t_info *client);
 

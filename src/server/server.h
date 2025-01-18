@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 17:26:35 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/16 19:24:50 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/18 16:37:20 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ typedef struct s_message
 
 typedef struct s_global
 {
-	int		client_pid;
-	int		current_pid;
-	int		getting_header;
-	int		getting_msg;
-	t_msg	message;
+	pid_t		client_pid;
+	pid_t		current_pid;
+	int			getting_header;
+	int			getting_msg;
+	t_msg		message;
 }	t_global;
 
 extern t_global	g_client;

@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:29:24 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/18 05:01:51 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/18 17:37:14 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,12 @@ int	is_server_ready(int server_pid)
 	return (g_server.is_ready);
 }
 
-void	validate_args(int argc, char **argv)
-{
-	if (argc != 3 || !is_validate_pid(argv[1]))
-		ft_perror("Invalid arguments.");
-}
-
 void	init_client_data(char **argv, t_info *client)
 {
 	ft_memset(client, 0, sizeof(t_info));
 	client->server_pid = ft_atoi_limitis(argv[1]);
 	client->client_pid = getpid();
+	ft_printf("PID Client: %d\n", client->client_pid);
 	client->message = argv[2];
 	if (client->server_pid == 0)
 		ft_perror("Signal sending failed.");
@@ -69,19 +64,24 @@ void	init_client_data(char **argv, t_info *client)
 int	main(int argc, char **argv)
 {
 	t_info	client;
+	int		len;
 
+	ft_printf("Number of arguments: %d\n", argc - 1);
 	if (argc == 3 && is_validate_pid(argv[1]))
 	{
 		init_client_data(argv, &client);
-		if (is_server_ready(client.server_pid) == 1)
+		len = ft_strlen(argv[2]);
+		if (is_server_ready(client.server_pid))
 		{
-			client.size_message = ft_strlen(argv[2]);
-			ft_printf("Message lenght [%d]\n", client.size_message);
-			send_message_bits(&client, 32);
+			ft_printf("Message lenght [%d]\n", len);
+			send_message_bits(&len, &client, 32);
 			display_message(client.message, &client);
 		}
-		return (0);
 	}
 	else
-		ft_perror("Invalid arguments.");
+		ft_perror("Invalid arguments");
+	return (0);
 }
+ 
+ /*Verificar la transcirpción del mensaje*/
+ /*Verificar como se gestiona PID del cliente*/
