@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 17:25:06 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/18 16:37:39 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/18 23:52:01 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct s_global
 
 extern t_global	g_server;
 
-void	validate_args(int argc, char **argv);
 void	init_client_data(char **argv, t_info *client);
 int		is_server_ready(int server_pid);
 void	server_signal_handler(int signum, siginfo_t *info, void *unused);
