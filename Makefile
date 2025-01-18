@@ -6,7 +6,7 @@
 #    By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 18:27:35 by vgoyzuet          #+#    #+#              #
-#    Updated: 2025/01/16 19:17:40 by vgoyzuet         ###   ########.fr        #
+#    Updated: 2025/01/18 04:31:57 by vgoyzuet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,8 @@ LIBFT = libft/libft.a
 SRCS_S = src/server/server.c\
 	src/server/main.c\
 
-SRCS_C = @echo "client don't exit yet"
-# src/client/client.c\
-# src/client/main.c\
+SRCS_C = src/client/client.c\
+	src/client/main.c\
 
 OBJ_S = $(SRCS_S:%.c=objs/%.o)
 OBJ_C = $(SRCS_C:%.c=objs/%.o)

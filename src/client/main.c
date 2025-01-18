@@ -6,23 +6,82 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:29:24 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/17 21:36:13 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/18 05:01:51 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "client.h"
 
+int	is_validate_pid(char *server_pid)
+{
+	int	i;
+
+	i = 0;
+	if (!server_pid[i])
+		return (0);
+	while (server_pid[i])
+	{
+		if (!ft_isdigit(server_pid[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	is_server_ready(int server_pid)
+{
+	struct sigaction	sa;
+
+	sa.sa_flags = SA_SIGINFO;
+	sa.sa_sigaction = server_signal_handler;
+	g_server.pid = server_pid;
+	g_server.is_ready = 0;
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
+	while (1)
+	{
+		kill(server_pid, SIGUSR1);
+		ft_printf("Waiting server response:\n");
+		sleep(1);
+		if (g_server.is_ready == 1)
+			break ;
+	}
+	ft_printf("Server ready: (%d)\n", g_server.is_ready);
+	return (g_server.is_ready);
+}
+
+void	validate_args(int argc, char **argv)
+{
+	if (argc != 3 || !is_validate_pid(argv[1]))
+		ft_perror("Invalid arguments.");
+}
+
+void	init_client_data(char **argv, t_info *client)
+{
+	ft_memset(client, 0, sizeof(t_info));
+	client->server_pid = ft_atoi_limitis(argv[1]);
+	client->client_pid = getpid();
+	client->message = argv[2];
+	if (client->server_pid == 0)
+		ft_perror("Signal sending failed.");
+}
+
 int	main(int argc, char **argv)
 {
 	t_info	client;
-	int		size_message;
 
-	if (argc == 3 && is_validate_pid(ft_itoa(argv[1])))
+	if (argc == 3 && is_validate_pid(argv[1]))
 	{
 		init_client_data(argv, &client);
-		//
+		if (is_server_ready(client.server_pid) == 1)
+		{
+			client.size_message = ft_strlen(argv[2]);
+			ft_printf("Message lenght [%d]\n", client.size_message);
+			send_message_bits(&client, 32);
+			display_message(client.message, &client);
+		}
+		return (0);
 	}
 	else
-		ft_perror("Invalid argument");
-	return (0);
+		ft_perror("Invalid arguments.");
 }
