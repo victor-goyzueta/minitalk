@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:29:24 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/18 17:37:14 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/18 23:44:55 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,3 @@ int	main(int argc, char **argv)
 		ft_perror("Invalid arguments");
 	return (0);
 }
- 
- /*Verificar la transcirpción del mensaje*/
- /*Verificar como se gestiona PID del cliente*/
