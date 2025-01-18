@@ -6,9 +6,15 @@
 #    By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 22:28:58 by vgoyzuet          #+#    #+#              #
-#    Updated: 2025/01/17 22:06:25 by vgoyzuet         ###   ########.fr        #
+#    Updated: 2025/01/18 23:27:34 by vgoyzuet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+# Colors
+GREEN	=	\033[1;32m
+CYAN	=	\033[0;36m
+WHITE	=	\033[0m
+CLEAR	=	\r\033[K
 
 # Library name
 NAME = libft.a
@@ -75,12 +81,12 @@ all: $(NAME)
 # Create the library from objects
 $(NAME): $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
-	@echo "libft.a successfully created."
+	@echo "$(CLEAR)$(CYAN)libft.a successfully created."
 
 # Copila objects .c to files .o
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "Copiling $<..."
+	@printf "$(CLEAR)$(CYAN)Copiling $<..."
 
 # Delete files objects (.o)
 clean:

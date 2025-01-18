@@ -6,9 +6,14 @@
 #    By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 18:27:35 by vgoyzuet          #+#    #+#              #
-#    Updated: 2025/01/18 04:31:57 by vgoyzuet         ###   ########.fr        #
+#    Updated: 2025/01/18 23:28:21 by vgoyzuet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+GREEN	=	\033[1;32m
+CYAN	=	\033[0;36m
+WHITE	=	\033[0m
+CLEAR	=	\r\033[K
 
 NAME_S = server
 NAME_C = client
@@ -32,12 +37,12 @@ all: $(NAME_S) $(NAME_C)
 $(NAME_S): objs $(OBJ_S)
 	@make -C libft
 	@$(CC) $(CFLAGS) $(OBJ_S) $(LIBFT) -o $(NAME_S)
-	@echo "Server ready"
+	@echo "$(GREEN)Server ready$(WHITE)"
 
 $(NAME_C): objs $(OBJ_C)
 	@make -C libft
 	@$(CC) $(CFLAGS) $(OBJ_C) $(LIBFT) -o $(NAME_C)
-	@echo "Client ready"
+	@echo "$(GREEN)Client ready$(WHITE)"
 
 objs:
 	@mkdir -p objs/src/server objs/src/client
