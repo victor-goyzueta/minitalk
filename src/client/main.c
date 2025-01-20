@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:29:24 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/18 23:44:55 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/20 19:56:15 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	init_client_data(char **argv, t_info *client)
 	ft_memset(client, 0, sizeof(t_info));
 	client->server_pid = ft_atoi_limitis(argv[1]);
 	client->client_pid = getpid();
-	ft_printf("PID Client: %d\n", client->client_pid);
+	ft_printf("Client PID: %d\n", client->client_pid);
 	client->message = argv[2];
 	if (client->server_pid == 0)
 		ft_perror("Signal sending failed.");

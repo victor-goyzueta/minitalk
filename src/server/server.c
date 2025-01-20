@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:47:37 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/18 22:59:41 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/20 20:02:54 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,19 @@
 
 t_global	g_client;
 
-int	lost_signal(int s_si_pid, int signum, int *i, void *unused)
+int	lost_signal(int s_si_pid, int signum, int *i)
 {
-	(void)unused;
+	static int	last_pid = 0;
 	if (s_si_pid == 0 && (signum == SIGUSR1 || signum == SIGUSR2))
 	{
-		ft_printf("i: [%d] client: %d with signal: %d\n",
-			(*i), s_si_pid, signum);
+		ft_printf("Signal received, but no associated PID\n");
 		s_si_pid = g_client.current_pid;
+		ft_printf("Resetting PID...\n");
+	}
+	if (s_si_pid != last_pid)
+	{
+		ft_printf("\nClient PID: %d\n", s_si_pid);
+		last_pid = s_si_pid;
 	}
 	return (s_si_pid);
 }
@@ -87,7 +92,7 @@ void	server_signal_handler(int signum, siginfo_t *info, void *unused)
 	static int	i;
 
 	(void)unused;
-	info->si_pid = lost_signal(info->si_pid, signum, &i, unused);
+	info->si_pid = lost_signal(info->si_pid, signum, &i);
 	if (info->si_pid == getpid())
 		ft_perror("Own process\n");
 	g_client.client_pid = info->si_pid;
