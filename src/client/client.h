@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 17:25:06 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/18 23:55:29 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:26:46 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 # define SERVER_READY SIGUSR1
 # define SERVER_BUSY SIGUSR2
+# define REQUEST_REPLY SIGUSR1
 
 # define CHAR_0 SIGUSR1
 # define CHAR_1 SIGUSR2

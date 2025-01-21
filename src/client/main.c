@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:29:24 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/20 19:56:15 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/21 17:10:27 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	is_server_ready(int server_pid)
 	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
 	{
-		kill(server_pid, SIGUSR1);
-		ft_printf("Waiting server response:\n");
+		kill(server_pid, REQUEST_REPLY);
+		ft_printf("Waiting server response...\n");
 		sleep(1);
 		if (g_server.is_ready == 1)
 			break ;
