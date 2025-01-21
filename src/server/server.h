@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 17:26:35 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/21 02:04:28 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/21 19:24:05 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 # define SERVER_BUSY SIGUSR2
 
 # define SIGNAL_RECEIVED SIGUSR2
+
+# define BYTE 8
+# define BYTE_4 32
 
 typedef struct s_message
 {

@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:29:24 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/21 17:10:27 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/21 18:44:08 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	main(int argc, char **argv)
 		{
 			ft_printf("Message lenght [%d]\n", len);
 			send_message_bits(&len, &client, 32);
-			display_message(client.message, &client);
+			send_message_content(client.message, &client);
 		}
 	}
 	else

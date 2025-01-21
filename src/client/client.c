@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:38:17 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/18 17:30:50 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/21 18:46:07 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,16 @@ void	send_signal(pid_t server_pid, int signal)
 		ft_perror("Signal sending failed.");
 }
 
-void send_message_bits(void *len, t_info *client, size_t bits)
+void send_message_bits(void *bytes, t_info *client, size_t bits)
 {
 	unsigned long long	value;
 	int					i;
 
 	value = 0;
-	if (bits == 8)
-		value = *((unsigned char *)len);
-	else if (bits == 32)
-		value = *((unsigned int *)len);
+	if (bits == BYTE)
+		value = *((unsigned char *)bytes);
+	else if (bits == BYTE_4)
+		value = *((unsigned int *)bytes);
 	i = bits - 1;
 	while (i >= 0)
 	{
@@ -63,7 +63,7 @@ void client_signal_handler(int signum, siginfo_t *info, void *context)
 	(void)signum, (void)info, (void)context;
 }
 
-void	display_message(char *message, t_info *client)
+void	send_message_content(char *message, t_info *client)
 {
 	struct sigaction	sa;
 	int					i;

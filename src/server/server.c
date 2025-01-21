@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:47:37 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/21 02:04:07 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/21 19:25:11 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ void	header_handler(int *i, int signum)
 {
 	const int	bit_value = get_signal_bit(signum);
 
-	if ((*i) < 32)
+	if ((*i) < BYTE_4)
 	{
-		g_client.message.size_message |= (bit_value << (31 - (*i)));
+		g_client.message.size_message |= (bit_value << (BYTE_4 - 1 - (*i)));
 		(*i)++;
 	}
-	if ((*i) == 32)
+	if ((*i) == BYTE_4)
 	{
 		ft_printf("Message size: [%d]\n", g_client.message.size_message);
 		g_client.message.message = malloc((g_client.message.size_message + 1) * 1);
@@ -65,9 +65,9 @@ void	message_handler(int *i, int signum)
 	static int	char_value;
 	static int	message_pos;
 
-	if (*i % 8 < 8)
+	if (*i % 8 < BYTE)
 	{
-		char_value |= (bit_value << (7 - (*i % 8)));
+		char_value |= (bit_value << (BYTE - 1 - (*i % 8)));
 		(*i)++;
 	}
 	if (*i % 8 == 0)
