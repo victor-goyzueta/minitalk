@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:47:37 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/20 20:02:54 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/21 02:04:07 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_global	g_client;
 
-int	lost_signal(int s_si_pid, int signum, int *i)
+int	lost_signal(int s_si_pid, int signum)
 {
 	static int	last_pid = 0;
 	if (s_si_pid == 0 && (signum == SIGUSR1 || signum == SIGUSR2))
@@ -92,7 +92,7 @@ void	server_signal_handler(int signum, siginfo_t *info, void *unused)
 	static int	i;
 
 	(void)unused;
-	info->si_pid = lost_signal(info->si_pid, signum, &i);
+	info->si_pid = lost_signal(info->si_pid, signum);
 	if (info->si_pid == getpid())
 		ft_perror("Own process\n");
 	g_client.client_pid = info->si_pid;
