@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:47:37 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/22 16:25:55 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:51:46 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,14 @@ t_global	g_client;
 
 int	lost_signal(int s_si_pid, int signum)
 {
+	static int	last;
+
 	if (s_si_pid == 0 && (signum == SIGUSR1 || signum == SIGUSR2))
-	{
 		s_si_pid = g_client.current_pid;
+	if (last != s_si_pid && s_si_pid == g_client.current_pid)
+	{
 		ft_printf("\nClient PID: %d\n", s_si_pid);
+		last = s_si_pid;
 	}
 	return (s_si_pid);
 }
@@ -43,7 +47,8 @@ void	header_handler(int *i, int signum)
 	if ((*i) == BYTE_4)
 	{
 		ft_printf("Message size: [%d]\n", g_client.message.size_message);
-		g_client.message.message = malloc((g_client.message.size_message + 1) * 1);
+		g_client.message.message = malloc((g_client.message.size_message + 1)
+				* 1);
 		if (!g_client.message.message)
 			ft_perror("Memory allocation failed");
 		g_client.getting_header = 0;
@@ -71,7 +76,7 @@ void	message_handler(int *i, int signum)
 	}
 	if (*i / 8 == g_client.message.size_message)
 	{
-		ft_printf("message: %s\n", g_client.message.message);
+		ft_printf("Message content:\n%s\n", g_client.message.message);
 		free(g_client.message.message);
 		ft_bzero(&g_client, sizeof(g_client));
 		g_client.getting_header = 1;

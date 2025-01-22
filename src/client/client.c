@@ -6,13 +6,13 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:38:17 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/22 03:01:53 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:38:47 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "client.h"
 
-t_global g_server;
+t_global	g_server;
 
 void	client_signal_handler(int signum, siginfo_t *info, void *unused)
 {
@@ -36,7 +36,7 @@ void	send_signal(pid_t server_pid, int signal)
 		ft_perror("Signal sending failed.");
 }
 
-void send_message_bits(void *bytes, t_info *client, size_t bits)
+void	send_message_bits(void *bytes, t_info *client, size_t bits)
 {
 	unsigned long long	value;
 	int					i;
@@ -58,7 +58,7 @@ void send_message_bits(void *bytes, t_info *client, size_t bits)
 	}
 }
 
-void reference_signal_handler(int signum, siginfo_t *info, void *context)
+void	reference_signal_handler(int signum, siginfo_t *info, void *context)
 {
 	(void)signum, (void)info, (void)context;
 }
@@ -67,7 +67,7 @@ void	send_message_content(char *message, t_info *client)
 {
 	struct sigaction	sa;
 	int					i;
-	
+
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_sigaction = reference_signal_handler;
 	sigaction(REF_SIGNAL, &sa, NULL);

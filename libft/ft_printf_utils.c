@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 16:37:27 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/17 21:33:13 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:39:58 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_putnbr_fd(int nbr, int fd)
 	return (counts_);
 }
 
-int	ft_putunsnbr_fd(unsigned int unsnbr,  int fd)
+int	ft_putunsnbr_fd(unsigned int unsnbr, int fd)
 {
 	int	counts_;
 

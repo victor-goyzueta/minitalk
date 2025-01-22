@@ -6,7 +6,7 @@
 #    By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 18:27:35 by vgoyzuet          #+#    #+#              #
-#    Updated: 2025/01/18 23:28:21 by vgoyzuet         ###   ########.fr        #
+#    Updated: 2025/01/22 20:13:03 by vgoyzuet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,17 +32,18 @@ SRCS_C = src/client/client.c\
 OBJ_S = $(SRCS_S:%.c=objs/%.o)
 OBJ_C = $(SRCS_C:%.c=objs/%.o)
 
-all: $(NAME_S) $(NAME_C)
+all: $(LIBFT) $(NAME_S) $(NAME_C)
 
 $(NAME_S): objs $(OBJ_S)
-	@make -C libft
 	@$(CC) $(CFLAGS) $(OBJ_S) $(LIBFT) -o $(NAME_S)
 	@echo "$(GREEN)Server ready$(WHITE)"
 
 $(NAME_C): objs $(OBJ_C)
-	@make -C libft
 	@$(CC) $(CFLAGS) $(OBJ_C) $(LIBFT) -o $(NAME_C)
 	@echo "$(GREEN)Client ready$(WHITE)"
+	
+$(LIBFT):
+	@make --silent -C libft
 
 objs:
 	@mkdir -p objs/src/server objs/src/client
@@ -51,12 +52,12 @@ objs/%.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@make clean -C libft
+	@make --silent clean -C libft
 	@rm -rf objs
 	@echo "Objetcs files deleted."
 
 fclean: clean
-	@make fclean -C libft
+	@make --silent fclean -C libft
 	@rm -f $(NAME_S)
 	@rm -f $(NAME_C)
 	@echo "Full clean completed"
