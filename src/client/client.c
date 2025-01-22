@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:38:17 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/21 21:48:54 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/22 03:01:53 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_global g_server;
 
-void	server_signal_handler(int signum, siginfo_t *info, void *unused)
+void	client_signal_handler(int signum, siginfo_t *info, void *unused)
 {
 	(void)unused;
 	if (info->si_pid == getpid())
@@ -58,7 +58,7 @@ void send_message_bits(void *bytes, t_info *client, size_t bits)
 	}
 }
 
-void client_signal_handler(int signum, siginfo_t *info, void *context)
+void reference_signal_handler(int signum, siginfo_t *info, void *context)
 {
 	(void)signum, (void)info, (void)context;
 }
@@ -69,8 +69,8 @@ void	send_message_content(char *message, t_info *client)
 	int					i;
 	
 	sa.sa_flags = SA_SIGINFO;
-	sa.sa_sigaction = client_signal_handler;
-	sigaction(SIGUSR2, &sa, NULL);
+	sa.sa_sigaction = reference_signal_handler;
+	sigaction(REF_SIGNAL, &sa, NULL);
 	i = 0;
 	while (message[i])
 		send_message_bits(&message[i++], client, 8);

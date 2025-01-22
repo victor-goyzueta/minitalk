@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 17:26:35 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/21 21:54:01 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/22 02:57:31 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <sys/time.h>
 
 # define SERVER_READY SIGUSR1
-# define SERVER_BUSY SIGUSR2
 
 # define SIGNAL_RECEIVED SIGUSR2
 

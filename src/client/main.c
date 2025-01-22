@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:29:24 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/21 21:54:02 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/22 02:51:49 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ int	is_server_ready(int server_pid)
 	struct sigaction	sa;
 
 	sa.sa_flags = SA_SIGINFO;
-	sa.sa_sigaction = server_signal_handler;
+	sa.sa_sigaction = client_signal_handler;
 	g_server.pid = server_pid;
 	g_server.is_ready = 0;
-	sigaction(SIGUSR1, &sa, NULL);
-	sigaction(SIGUSR2, &sa, NULL);
+	sigaction(SERVER_READY, &sa, NULL);
+	sigaction(SERVER_BUSY, &sa, NULL);
 	while (1)
 	{
 		kill(server_pid, REQUEST_REPLY);
@@ -66,7 +66,7 @@ int	main(int argc, char **argv)
 	t_info	client;
 	int		len;
 
-	ft_printf("Number of arguments: %d\n", argc - 1);
+	ft_printf("\nNumber of arguments: %d\n", argc - 1);
 	if (argc == 3 && is_validate_pid(argv[1]))
 	{
 		init_client_data(argv, &client);

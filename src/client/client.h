@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 17:25:06 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/21 21:54:00 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/22 02:51:51 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define SERVER_BUSY SIGUSR2
 
 # define REQUEST_REPLY SIGUSR1
-# define REFERENCE SIGUSR2
+# define REF_SIGNAL SIGUSR2
 
 # define CHAR_0 SIGUSR1
 # define CHAR_1 SIGUSR2
@@ -50,7 +50,7 @@ extern t_global	g_server;
 
 void	init_client_data(char **argv, t_info *client);
 int		is_server_ready(int server_pid);
-void	server_signal_handler(int signum, siginfo_t *info, void *unused);
+void	client_signal_handler(int signum, siginfo_t *info, void *unused);
 void 	send_message_bits(void *bytes, t_info *client, size_t bits);
 void	send_signal(pid_t server_pid, int signal);
 void	send_message_content(char *message, t_info *client);
