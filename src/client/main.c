@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:29:24 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/22 17:29:01 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/22 20:50:45 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	main(int argc, char **argv)
 		len = ft_strlen(argv[2]);
 		if (is_server_ready(client.server_pid))
 		{
-			ft_printf("Message lenght [%d]\n", len);
+			ft_printf("Message size [%d]\n", len);
 			send_message_bits(&len, &client, 32);
 			send_message_content(client.message, &client);
 		}
