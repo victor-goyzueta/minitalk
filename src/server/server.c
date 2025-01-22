@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:47:37 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/22 02:57:25 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/22 16:25:55 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,10 @@ t_global	g_client;
 
 int	lost_signal(int s_si_pid, int signum)
 {
-	static int	last_pid = 0;
 	if (s_si_pid == 0 && (signum == SIGUSR1 || signum == SIGUSR2))
 	{
-		ft_printf("Signal received, but no associated PID\n");
 		s_si_pid = g_client.current_pid;
-		ft_printf("Resetting PID...\n");
-	}
-	if (s_si_pid != last_pid)
-	{
 		ft_printf("\nClient PID: %d\n", s_si_pid);
-		last_pid = s_si_pid;
 	}
 	return (s_si_pid);
 }
@@ -78,7 +71,7 @@ void	message_handler(int *i, int signum)
 	}
 	if (*i / 8 == g_client.message.size_message)
 	{
-		ft_printf("message: [%s]\n", g_client.message.message);
+		ft_printf("message: %s\n", g_client.message.message);
 		free(g_client.message.message);
 		ft_bzero(&g_client, sizeof(g_client));
 		g_client.getting_header = 1;
