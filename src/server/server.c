@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:47:37 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2025/01/22 17:51:46 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2025/01/22 20:28:06 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ t_global	g_client;
 
 int	lost_signal(int s_si_pid, int signum)
 {
-	static int	last;
+	static int	last_pid;
 
 	if (s_si_pid == 0 && (signum == SIGUSR1 || signum == SIGUSR2))
 		s_si_pid = g_client.current_pid;
-	if (last != s_si_pid && s_si_pid == g_client.current_pid)
+	if (last_pid != s_si_pid && s_si_pid == g_client.current_pid)
 	{
 		ft_printf("\nClient PID: %d\n", s_si_pid);
-		last = s_si_pid;
+		last_pid = s_si_pid;
 	}
 	return (s_si_pid);
 }
