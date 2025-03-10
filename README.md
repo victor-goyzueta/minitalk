@@ -1,9 +1,6 @@
 # minitalk
 
-<video width="600" controls>
-    <source src="minitalk_v1.mp4" type="video/mp4">
-    Tu navegador no soporta el video.
-</video>
+![minitalk](minitalk_v1.gif)
 
 # Objetivo general de `minitalk`
 
