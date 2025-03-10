@@ -1,5 +1,10 @@
 # minitalk
 
+<video width="600" controls>
+    <source src="minitalk_v1.mp4" type="video/mp4">
+    Tu navegador no soporta el video.
+</video>
+
 # Objetivo general de `minitalk`
 
 - **Debes crear un programa de comunicación en la forma de un `client` y un `server`.**
