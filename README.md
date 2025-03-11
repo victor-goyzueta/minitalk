@@ -1,6 +1,6 @@
 # minitalk
 
-![minitalk](minitalk_v1.gif)
+![minitalk](minitalk.gif)
 
 # Objetivo general de `minitalk`
 
@@ -62,7 +62,3 @@
     - Se procesa cada `char` en binario para `BYTE`.
     - Se espera confirmación (`SIGNAL_RECEIVED`) del `server` por cada bit enviado.
 5. **Proceso completado.**
-
----
-
-
